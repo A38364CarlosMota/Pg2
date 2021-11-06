@@ -55,30 +55,22 @@ void printBytes( char a[], int i, int n){
 
 int charLeadingOnes ( char value){
 	
-	char countBits = 0;
-	char countAux = 0;
-	int mask =( 1 << (tamanho_char_em_bits-1));
-	int i;
-	
-	for(i=0; i< NUM_BYTES ; i++){
-		if( value & mask ) countAux++;
-		else if(countAux >= countBits){
-			countBits = countAux;
-			countAux=0;
-		}
-			
-		mask=mask>>1;
-	}
-	
-	return (countAux > countBits ? countAux:countBits );
-	
-		
+	int count = 0;  
+	for (unsigned int mask = 1 << (CHAR_BIT -1); mask >= 1  ; mask >>= 1 ){
+		if ((value & mask) == 0) return count;
+		else if ((value & mask)) count ++;
+	}		
+	return count;
 }
+
+
+		
+
 int utf8Length(char a[], int i){
 	
 	int mask= 1;
 	
-	mask = mask << tamanho_char_em_bits;
+	mask = mask << (tamanho_char_em_bits-1);
 	if((a[i] & mask) == 0 ) return 1;   // retorna 1 byte
 	
 	return charLeadingOnes(a[i]);
