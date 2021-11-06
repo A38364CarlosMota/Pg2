@@ -7,7 +7,7 @@ int charLeadingOnes( char value );
 
 int main()
 {
-	printf(" %d tem %d 1s\n",14,charLeadingOnes(0xF2));
+	printf(" %d tem %d 1s\n",242,charLeadingOnes(0xF2));
 	printf(" %d tem %d 1s\n",40,charLeadingOnes(40));
 	printf(" %d tem %d 1s\n",100,charLeadingOnes(100));
 	printf(" %d tem %d 1s\n",255,charLeadingOnes(255));
@@ -33,7 +33,7 @@ int main()
 }
 
 int charLeadingOnes ( char value){
-	
+	/*
 	char countBits = 0;
 	char countAux = 0;
 	int mask =( 1 << (tamanho_char_em_bits-1));
@@ -49,7 +49,13 @@ int charLeadingOnes ( char value){
 		mask=mask>>1;
 	}
 	
-	return (countAux > countBits ? countAux:countBits );
+	return (countAux > countBits ? countAux:countBits );*/
+		int count = 0;  
+		for ( int mask = 1 << (CHAR_BIT -1); mask >= 1  ; mask >>= 1 ){
+		if ((value & mask) == 0) return count;
+		else if ((value & mask)) count ++;
+	}		
+	return count;
 	
 		
 }
