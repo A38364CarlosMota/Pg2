@@ -6,9 +6,13 @@
 int charLeadingOnes( char value );
 
 int main()
-{
-	printf(" %d tem %d 1s\n",242,charLeadingOnes(0xF2));
-	printf(" %d tem %d 1s\n",40,charLeadingOnes(40));
+
+{	for(int i = 0 ; i < 0xFF ; i++){
+		printf(" %x tem %d 1s\n", i,charLeadingOnes(i));
+	}
+	return 0;
+
+/*	printf(" %d tem %d 1s\n",40,charLeadingOnes(40));
 	printf(" %d tem %d 1s\n",100,charLeadingOnes(100));
 	printf(" %d tem %d 1s\n",255,charLeadingOnes(255));
 	printf(" %d tem %d 1s\n",0x00,charLeadingOnes(0x00));
@@ -29,7 +33,7 @@ int main()
 	printf(" %d tem %d 1s\n",0x0F,charLeadingOnes(0x0F));
 	printf(" %d tem %d 1s\n",0xA4,charLeadingOnes(0xA2));
 	printf(" %d tem %d 1s\n",0xFF,charLeadingOnes(0xFF));
-	return 0;
+	return 0;*/
 }
 
 int charLeadingOnes ( char value){
